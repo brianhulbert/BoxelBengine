@@ -1,0 +1,8 @@
+- primative shapes (GameObject)
+	- cube, sphere, triangle, etc.
+- composite game objects
+	- possible batching support
+- input
+- materials (How to draw GameObjects)
+- lighting
+- scene update thread
