@@ -68,10 +68,7 @@ void GameObject::Update(float deltaTime) {
 }
 
 glm::mat4 GameObject::GetModelMat() {
-	glm::mat4 model = glm::translate(glm::mat4(1.0f), transform.translation);
-	model = glm::rotate(model, glm::radians(transform.rotation.x), glm::vec3(1, 0, 0));
-	model = glm::rotate(model, glm::radians(transform.rotation.y), glm::vec3(0, 1, 0));
-	return glm::rotate(model, glm::radians(transform.rotation.z), glm::vec3(0, 0, 1));
+	return transform.GetMat();
 }
 
 void GameObject::SetIndestructable() {

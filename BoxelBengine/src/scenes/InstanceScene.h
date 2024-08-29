@@ -17,7 +17,7 @@ namespace scene {
 		InstanceScene(GameWindow* w);
 		~InstanceScene() {};
 
-		void OnImGuiRender() override {};
+		void OnImGuiRender() override;
 	private:
 		GameWindow* gameWindow;
 		Renderer renderer;

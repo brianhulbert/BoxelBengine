@@ -56,8 +56,9 @@ public:
 	scene::Scene* parentScene;
 private:
 	Renderer renderer;
-	bool isVisible;
 	bool updateTransformUniform;
 	glm::mat4 GetModelMat();
 	bool isDestructable;
+protected:
+	bool isVisible;
 };

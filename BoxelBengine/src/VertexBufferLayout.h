@@ -4,6 +4,9 @@
 #include <stdexcept>
 #include <Renderer.h>
 
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
 struct VertexBufferElement {
 	unsigned int type;
 	unsigned int count;
@@ -48,6 +51,15 @@ public:
 	void Push<unsigned char>(unsigned int count) {
 		m_Elements.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE});
 		m_Stride += VertexBufferElement::GetSizeOfType(GL_UNSIGNED_BYTE) * count;
+	}
+
+	template<>
+	void Push<glm::mat4>(unsigned int count) {
+		for (unsigned int i = 0; i < count; i++) {
+			for (int j = 0; j < 4; j++) {
+				this-> Push<float>(4);
+			}
+		}
 	}
 
 	inline const std::vector<VertexBufferElement> GetElements() const { return m_Elements; }

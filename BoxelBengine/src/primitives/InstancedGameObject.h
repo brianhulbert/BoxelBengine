@@ -5,13 +5,14 @@
 
 class InstancedGameObject : public GameObject {
 public:
-	static InstancedGameObject* CreateInstancedGameObject(scene::Scene* scene, Mesh* mesh, unsigned int count, Transform* transforms);
+	~InstancedGameObject();
+	static InstancedGameObject* CreateInstancedGameObject(scene::Scene* scene, Mesh* mesh, unsigned int count, glm::mat4* modelMats);
 	static InstancedGameObject* CreateInstancedGameObject(GameObject* obj, unsigned int count, Transform* transforms);
 
 	void Draw() override;
 private:
-	InstancedGameObject(scene::Scene* parentScene, Mesh* mesh, std::string shaderfile, std::string texturefile, unsigned int count, Transform* transforms, VertexArray* va = nullptr, VertexBuffer* vb = nullptr, IndexBuffer* ib = nullptr);
+	InstancedGameObject(scene::Scene* parentScene, Mesh* mesh, std::string shaderfile, std::string texturefile, unsigned int count, glm::mat4* modelMatrices, VertexArray* va = nullptr, VertexBuffer* vb = nullptr, IndexBuffer* ib = nullptr);
 	unsigned int count;
-	Transform* transforms;
+	glm::mat4* modelMats;
 	VertexBuffer* transformVB;
 };
