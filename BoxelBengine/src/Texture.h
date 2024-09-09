@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include "renderer.h"
 
 class Texture {
 private:

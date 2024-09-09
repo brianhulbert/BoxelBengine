@@ -5,7 +5,7 @@
 #include "VertexArray.h"
 #include "VertexBufferLayout.h"
 #include "IndexBuffer.h"
-#include "Shader.h"
+#include "Material.h"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -21,7 +21,7 @@ bool GLLOGCALL(const char* function, const char* file, int line);
 
 class Renderer {
 public:
-    void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const;
+    void Draw(const VertexArray& va, const IndexBuffer& ib, Material& material) const;
     void Clear() const;
 };
 

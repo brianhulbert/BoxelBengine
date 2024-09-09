@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -148,6 +148,7 @@
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\GameWindow.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
+    <ClCompile Include="src\Material.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\primitives\CubeGameObject.cpp" />
     <ClCompile Include="src\primitives\InstancedGameObject.cpp" />
@@ -178,6 +179,7 @@
     <None Include="res\shaders\Basic2D.shader" />
     <None Include="res\shaders\Basic3D.shader" />
     <None Include="res\shaders\BasicInstance.shader" />
+    <None Include="res\shaders\BasicLighting.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />
@@ -322,6 +324,7 @@
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\GameWindow.h" />
     <ClInclude Include="src\IndexBuffer.h" />
+    <ClInclude Include="src\Material.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\primitives\CubeGameObject.h" />
     <ClInclude Include="src\primitives\InstancedGameObject.h" />

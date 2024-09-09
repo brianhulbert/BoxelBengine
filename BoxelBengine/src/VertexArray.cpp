@@ -12,7 +12,7 @@ VertexArray::~VertexArray() {
 }
 
 void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout, unsigned int divisor) {
-	Bind();
+	this->Bind();
 	vb.Bind();
 	const auto& elements = layout.GetElements();
 	unsigned int offset = 0;
