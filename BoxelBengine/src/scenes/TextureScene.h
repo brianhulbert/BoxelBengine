@@ -19,8 +19,7 @@ namespace scene {
 		std::unique_ptr<VertexArray> m_VA;
 		std::unique_ptr<VertexBuffer> m_VB;
 		std::unique_ptr<IndexBuffer> m_IB;
-		std::unique_ptr<Texture> m_Texture;
-		std::unique_ptr<Shader> m_Shader;
+		Material m_material;
 		glm::vec3 m_TextureTranslation;
 		glm::mat4 m_Proj;
 		glm::mat4 m_View;

@@ -7,7 +7,7 @@
 #include "scenes/Scene.h"
 
 GameObject::GameObject(scene::Scene* parentScene, Mesh* mesh, std::string shaderfile, std::string texturefile, VertexArray* va, VertexBuffer* vb, IndexBuffer* ib) :
-	parentScene(parentScene), mesh(mesh), shader(nullptr), texture(nullptr), va(va), vb(vb), ib(ib),
+	parentScene(parentScene), mesh(mesh), material(texturefile, shaderfile), va(va), vb(vb), ib(ib),
 	isVisible(false), updateTransformUniform(false), transform({glm::vec3(0.0f), glm::vec3(0.0f) }), velocity({ glm::vec3(0.0f), glm::vec3(0.0f) }), isDestructable(true) {
 	if (!vb) {
 		this->vb = new VertexBuffer(mesh->GetVertexData(), mesh->GetVertexCount() * mesh->GetVertexSize());
@@ -19,16 +19,7 @@ GameObject::GameObject(scene::Scene* parentScene, Mesh* mesh, std::string shader
 	if (!ib) {
 		this->ib = new IndexBuffer(mesh->GetIndexData(), mesh->GetIndexCount());
 	}
-
-	//create shader
-	shader = new Shader(shaderfile);
-	shader->Bind();
-
-	//create texture and set shader uniform
-	texture = new Texture(texturefile);
-	//Set uniforms
-	shader->SetUniform1i("u_Texture", 0);
-
+	material.SetUniform("lightColor", glm::vec3(1.0));
 	isVisible = true;
 }
 
@@ -37,25 +28,25 @@ GameObject::~GameObject() {
 		delete va;
 		delete vb;
 		delete ib;
-		delete shader;
 		delete mesh;
 	}
 }
 
 void GameObject::Draw() {
 	if (isVisible) {
-		shader->Bind();
+		material.Bind();
 		va->Bind();
 		ib->Bind();
 
 		glm::mat4 model = GetModelMat();
 		glm::mat4 view = parentScene->GetViewMat();
 		glm::mat4 proj = parentScene->GetProjMat();
-		glm::mat4 MVP = proj * view * model;
 
-		shader->SetUniformMat4f("u_MVP", MVP);
-		texture->Bind();
-		renderer.Draw(*va, *ib, *shader);
+		material.SetUniform("model", model);
+		material.SetUniform("view", view);
+		material.SetUniform("proj", proj);
+
+		renderer.Draw(*va, *ib, material);
 	}
 }
 

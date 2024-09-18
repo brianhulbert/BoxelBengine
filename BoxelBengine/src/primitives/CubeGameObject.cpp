@@ -87,5 +87,5 @@ CubeGameObject* CubeGameObject::CreateCube(scene::Scene* parentScene, float scal
 	//Create a mesh object for the cube
 	Mesh* cubeMesh = new Mesh(vertexBuffer, vertexBufferSize / sizeof(float), indexBuffer, indexBufferSize / sizeof(unsigned int), vertexLayout);
 	
-	return new CubeGameObject(parentScene, cubeMesh, "res/shaders/Basic3D.shader", "res/textures/cat.png");
+	return new CubeGameObject(parentScene, cubeMesh, "res/shaders/BasicLighting.shader", "res/textures/cat2.png");
 }

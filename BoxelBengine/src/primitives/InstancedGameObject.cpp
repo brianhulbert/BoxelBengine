@@ -26,9 +26,6 @@ InstancedGameObject* InstancedGameObject::CreateInstancedGameObject(GameObject* 
 	//Fix the texture issue
 	obj->SetIndestructable();
 
-	delete obj->shader;
-	delete obj->texture;
-
 	//Create a buffer to hold the model matrices
 	glm::mat4* modelMats = (glm::mat4*)malloc(sizeof(glm::mat4) * count);
 	for (unsigned int i = 0; i < count; i++) {
@@ -42,7 +39,7 @@ InstancedGameObject* InstancedGameObject::CreateInstancedGameObject(GameObject* 
 
 void InstancedGameObject::Draw() {
 	if (isVisible) {
-		shader->Bind();
+		material.Bind();
 		va->Bind();
 		ib->Bind();
 
@@ -50,8 +47,8 @@ void InstancedGameObject::Draw() {
 		glm::mat4 proj = parentScene->GetProjMat();
 		glm::mat4 PV = proj * view;
 
-		shader->SetUniformMat4f("PV", PV);
-		texture->Bind();
+		material.SetUniform("PV", PV);
+		
 		GLCALL(glDrawElementsInstanced(GL_TRIANGLES, ib->m_Count, GL_UNSIGNED_INT, nullptr, count));
 	}
 	
