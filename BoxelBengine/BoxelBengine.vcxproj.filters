@@ -105,6 +105,9 @@
     <ClCompile Include="src\scenes\InstanceScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -522,8 +525,9 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="res\shaders\Basic2D.shader" />
-    <None Include="res\shaders\Basic3D.shader" />
     <None Include="res\shaders\BasicInstance.shader" />
+    <None Include="res\shaders\Basic3D.shader" />
+    <None Include="res\shaders\BasicLighting.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1478,6 +1482,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\scenes\InstanceScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

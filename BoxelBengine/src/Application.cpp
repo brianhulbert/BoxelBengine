@@ -17,6 +17,7 @@
 #include "scenes/TextureScene.h"
 #include "scenes/CubeScene.h"
 #include "scenes/MotionScene.h"
+#include "scenes/InstanceScene.h"
 #include "GameWindow.h"
 
 #include "glm/glm.hpp"
@@ -34,11 +35,13 @@ int main(void)
     scene::TextureScene* textureScene = new scene::TextureScene(&game);
     scene::CubeScene* cubeScene = new scene::CubeScene(&game);
     scene::MotionScene* motionScene = new scene::MotionScene(&game);
+    scene::InstanceScene* instanceScene = new scene::InstanceScene(&game);
 
     menuScene->AddScene(clearScene->GetName());
     menuScene->AddScene(textureScene->GetName());
     menuScene->AddScene(cubeScene->GetName());
     menuScene->AddScene(motionScene->GetName());
+    menuScene->AddScene(instanceScene->GetName());
 
     game.SetCurrentScene(menuScene);
 

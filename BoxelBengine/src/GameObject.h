@@ -6,6 +6,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "scenes/Scene.h"
 #include "Mesh.h"
+#include "Material.h"
 
 class GameWindow;
 class Texture;
@@ -45,19 +46,19 @@ public:
 	void SetIndestructable();
 
 	Transform transform;
+	Material material;
 	Motion velocity;
 	std::string name;
 	VertexArray* va;
 	VertexBuffer* vb;
 	IndexBuffer* ib;
-	Texture* texture;
 	Mesh* mesh;
-	Shader* shader;
 	scene::Scene* parentScene;
 private:
 	Renderer renderer;
-	bool isVisible;
 	bool updateTransformUniform;
 	glm::mat4 GetModelMat();
 	bool isDestructable;
+protected:
+	bool isVisible;
 };
