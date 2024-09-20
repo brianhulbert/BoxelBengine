@@ -108,6 +108,9 @@
     <ClCompile Include="src\Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\primitives\VoxelGameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -528,6 +531,7 @@
     <None Include="res\shaders\BasicInstance.shader" />
     <None Include="res\shaders\Basic3D.shader" />
     <None Include="res\shaders\BasicLighting.shader" />
+    <None Include="res\shaders\BasicVoxel.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1485,6 +1489,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\primitives\VoxelGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

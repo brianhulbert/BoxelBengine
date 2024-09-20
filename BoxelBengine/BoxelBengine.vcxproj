@@ -153,6 +153,7 @@
     <ClCompile Include="src\primitives\CubeGameObject.cpp" />
     <ClCompile Include="src\primitives\InstancedGameObject.cpp" />
     <ClCompile Include="src\primitives\TriangleGameObject.cpp" />
+    <ClCompile Include="src\primitives\VoxelGameObject.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\scenes\ClearColorScene.cpp" />
     <ClCompile Include="src\scenes\CubeScene.cpp" />
@@ -180,6 +181,7 @@
     <None Include="res\shaders\Basic3D.shader" />
     <None Include="res\shaders\BasicInstance.shader" />
     <None Include="res\shaders\BasicLighting.shader" />
+    <None Include="res\shaders\BasicVoxel.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />
@@ -329,6 +331,7 @@
     <ClInclude Include="src\primitives\CubeGameObject.h" />
     <ClInclude Include="src\primitives\InstancedGameObject.h" />
     <ClInclude Include="src\primitives\TriangleGameObject.h" />
+    <ClInclude Include="src\primitives\VoxelGameObject.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\scenes\CubeScene.h" />
     <ClInclude Include="src\scenes\InstanceScene.h" />
