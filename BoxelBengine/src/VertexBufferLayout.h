@@ -29,7 +29,7 @@ public:
 
 	template<typename T>
 	void Push(unsigned int count) {
-		std::runtime_error(false);
+		std::runtime_error("false");
 	}
 
 	template<>

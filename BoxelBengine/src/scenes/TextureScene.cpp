@@ -1,5 +1,7 @@
 #include "TextureScene.h"
 
+#include <iostream>
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
@@ -17,6 +19,7 @@ namespace scene {
 			0, 1, 2,
 			2, 3, 0
 		};
+
 		
 		GLCALL(glEnable(GL_BLEND));
 		GLCALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));

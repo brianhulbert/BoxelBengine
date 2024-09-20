@@ -9,6 +9,8 @@ GameWindow::GameWindow(std::string name, bool enable_vsync, bool enable_blending
         std::cout << "Setup Error" << std::endl;
         return;
     }
+    
+    //const char* glsl_version = "#version 150";
 
     /* Get main monitor dimensions */
     GLFWmonitor* monitor = glfwGetPrimaryMonitor();
@@ -18,6 +20,11 @@ GameWindow::GameWindow(std::string name, bool enable_vsync, bool enable_blending
 
     /* Create a windowed mode window and its OpenGL context */
     //window = glfwCreateWindow(monitor_width, monitor_height, "Hello World", monitor, NULL); // for full screen
+    
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     window = glfwCreateWindow(monitor_width, monitor_height, windowName.c_str(), NULL, NULL);
     if (!window)
     {
@@ -32,6 +39,8 @@ GameWindow::GameWindow(std::string name, bool enable_vsync, bool enable_blending
     
     if(enable_vsync)
         glfwSwapInterval(1);
+
+    glewExperimental = GL_TRUE;
     
     if (glewInit() != GLEW_OK) {
         if (debug)
@@ -41,7 +50,7 @@ GameWindow::GameWindow(std::string name, bool enable_vsync, bool enable_blending
         return;
     }
 
-    std::cout << glGetString(GL_VERSION) << std::endl;
+    std::cout << "gl version: " << glGetString(GL_VERSION) << std::endl;
 
     if (enable_blending){
         // Enable depth testing
@@ -60,7 +69,7 @@ GameWindow::GameWindow(std::string name, bool enable_vsync, bool enable_blending
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls    
         ImGui::StyleColorsDark();
         ImGui_ImplGlfw_InitForOpenGL(window, true);
-        ImGui_ImplOpenGL3_Init("#version 130");
+        ImGui_ImplOpenGL3_Init(nullptr);
     }
     windowStatus = READY;
 }

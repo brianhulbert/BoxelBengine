@@ -2,9 +2,10 @@
 #include "VertexBufferLayout.h"
 #include "Renderer.h"
 
+#include <iostream>
+
 VertexArray::VertexArray() : attribCount(0){
-	
-	GLCALL(glGenVertexArrays(1, &m_RendererID));
+	glGenVertexArrays(1, &m_RendererID);
 }
 
 VertexArray::~VertexArray() {
