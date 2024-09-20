@@ -1,9 +1,3 @@
 [submodule "BoxelBengine/external/imgui"]
 	path = BoxelBengine/external/imgui
 	url = https://github.com/ocornut/imgui
-[submodule "BoxelBengine/external/glm"]
-	path = BoxelBengine/external/glm
-	url = https://github.com/g-truc/glm
-[submodule "BoxelBengine/external/glfw"]
-	path = BoxelBengine/external/glfw
-	url = https://github.com/glfw/glfw

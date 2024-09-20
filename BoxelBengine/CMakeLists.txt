@@ -30,16 +30,12 @@ add_executable(${PROJECT_NAME} ${H_FILES} ${SRC_FILES})
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 set(GLEW_VERBOSE TRUE)
 
-add_subdirectory("${CMAKE_SOURCE_DIR}/external/glfw/")
-add_subdirectory("${CMAKE_SOURCE_DIR}/external/glm/")
-
 set(OpenGL_GL_PREFERENCE GLVND)
 
+#find needed libraries
 find_package(OpenGL REQUIRED)
 find_package(GLM CONFIG REQUIRED)
 find_package(GLFW3 REQUIRED)
-#GLFW is in src
-
 find_package(GLEW REQUIRED)
 
 message(FOUND_GLEW=${GLEW_FOUND})
