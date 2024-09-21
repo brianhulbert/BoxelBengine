@@ -22,7 +22,7 @@ jobs:
     - name: Package installs & Test glxinfo
       run: |
         sudo apt-get update
-        sudo apt-get install -y mesa-utils libgl1-mesa-dev libwayland-dev xvfb
+        sudo apt-get install -y mesa-utils libgl1-mesa-dev libwayland-dev libxkbcommon-x11-0 xvfb
         xvfb-run glxinfo
 
     - name: Configure CMake
