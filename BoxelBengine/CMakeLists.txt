@@ -23,30 +23,24 @@ file(GLOB_RECURSE H_FILES
   ${CMAKE_SOURCE_DIR}/external.imgui/*.h
 )
 
-include_directories(${CMAKE_BINARY_DIR}/src)
 
 add_executable(${PROJECT_NAME} ${H_FILES} ${SRC_FILES})
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
-set(GLEW_VERBOSE TRUE)
 
 set(OpenGL_GL_PREFERENCE GLVND)
 
-#find needed libraries
+#find and build dependencies
 find_package(OpenGL REQUIRED)
-find_package(GLM CONFIG REQUIRED)
-find_package(GLFW3 REQUIRED)
-find_package(GLEW REQUIRED)
-
-message(FOUND_GLEW=${GLEW_FOUND})
-message(GLEW_VERSION=${GLEW_VERSION_MAJOR}.${GLEW_VERSION_MINOR})
+add_definitions(-DGLEW_STATIC)
+add_subdirectory(external/glfw EXCLUDE_FROM_ALL)
+add_subdirectory(external/glew EXCLUDE_FROM_ALL)
+add_subdirectory(external/glm EXCLUDE_FROM_ALL)
 
 add_library(STB_IMAGE "external/stb_image/stb_image.cpp") 
 add_library(IMGUI "external/imgui/imgui.cpp")
 
-set(LIBS glfw OpenGL::GL ${CMAKE_DL_LIBS} GLEW::glew STB_IMAGE IMGUI glm::glm)
-
-include_directories(${GLEW_INCLUDE_DIRS})
+set(LIBS glfw OpenGL::GL ${CMAKE_DL_LIBS} libglew_static STB_IMAGE IMGUI glm)
 
 include_directories(
   "${CMAKE_SOURCE_DIR}/src"
