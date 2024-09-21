@@ -29,7 +29,7 @@
 int main(void)
 {
     GameWindow game("Test app", true);
-
+    std::cout << "c++ std: " << __cplusplus << std::endl;
     scene::SceneMenu* menuScene = new scene::SceneMenu(&game);
     scene::ClearColorScene* clearScene = new scene::ClearColorScene(&game);
     scene::TextureScene* textureScene = new scene::TextureScene(&game);
