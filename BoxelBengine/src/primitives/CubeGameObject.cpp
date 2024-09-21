@@ -1,4 +1,5 @@
 #include "CubeGameObject.h"
+#include <cstring>
 
 CubeGameObject::CubeGameObject(scene::Scene* parentScene, Mesh* mesh, std::string shaderfile, std::string texturefile) :
 	GameObject(parentScene, mesh, shaderfile, texturefile) {
