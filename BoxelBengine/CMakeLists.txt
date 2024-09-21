@@ -42,7 +42,6 @@ add_library(IMGUI "external/imgui/imgui.cpp")
 
 set(LIBS glfw OpenGL::GL ${CMAKE_DL_LIBS} libglew_static STB_IMAGE IMGUI glm)
 #for some compilers, might need to specify inclusion of std::filesystem 
-#set(CMAKE_CXX_FLAGS "-lstdc++fs")
 
 include_directories(
   "${CMAKE_SOURCE_DIR}/src"

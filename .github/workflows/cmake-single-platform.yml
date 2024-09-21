@@ -23,7 +23,6 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install build-essential
-
         sudo apt-get install -y mesa-utils libgl1-mesa-dev libwayland-dev libxkbcommon-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev xvfb
         xvfb-run glxinfo
 
