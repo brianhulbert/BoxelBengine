@@ -32,7 +32,7 @@ namespace scene{
 		if (ImGui::Button("<-")) {
 			SetScene("Menu Scene");
 		}
-		ImGui::Text(entities[0]->name.c_str());
+		ImGui::Text("%s",entities[0]->name.c_str());
 		ImGui::SliderFloat3("Translation", &entities[0]->transform.translation.x, -1.0f, 1.0f);
 		ImGui::SliderFloat3("Rotation", &entities[0]->transform.rotation.x, -360.0f, 360.0f);
 		ImGui::SliderFloat3("Camera Translation", &GetCameraTransform().translation.x, 0.0f, 100.0f);
