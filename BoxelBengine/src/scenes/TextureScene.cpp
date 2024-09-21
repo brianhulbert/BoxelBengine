@@ -28,8 +28,8 @@ namespace scene {
 		m_VA = std::make_unique<VertexArray>();
 		m_VB = std::make_unique<VertexBuffer>(positions, 4 * 4 * sizeof(float));
 		VertexBufferLayout layout;
-		layout.Push<float>(2);
-		layout.Push<float>(2);
+		layout.push_float(2);
+		layout.push_float(2);
 		m_VA->AddBuffer(*m_VB, layout);
 		 
 		m_IB = std::make_unique<IndexBuffer>(indices, 6);

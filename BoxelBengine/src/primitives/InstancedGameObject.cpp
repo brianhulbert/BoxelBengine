@@ -9,7 +9,8 @@ InstancedGameObject::InstancedGameObject(scene::Scene* parentScene, Mesh* mesh, 
 	unsigned int modelBufferSize = count * sizeof(glm::mat4);
 	transformVB = new VertexBuffer(modelMats, modelBufferSize);
 	VertexBufferLayout modelBufferLayout;
-	modelBufferLayout.Push<glm::mat4>(1);
+	//modelBufferLayout.Push<glm::mat4>(1);
+  modelBufferLayout.push_glmmat4(1);
 	this->va->AddBuffer(*transformVB, modelBufferLayout, 1);
 }
 

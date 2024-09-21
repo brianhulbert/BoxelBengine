@@ -37,8 +37,8 @@ TriangleGameObject* TriangleGameObject::CreateTriangle(scene::Scene* parentScene
 
 	//Specify the layout of the buffer
 	VertexBufferLayout* vertexLayout = new VertexBufferLayout();
-	vertexLayout->Push<float>(3);
-	vertexLayout->Push<float>(2);
+	vertexLayout->push_float(3);
+	vertexLayout->push_float(2);
 
 	//create index buffer
 	unsigned int indexBufferSize = 6 * 2 * sizeof(unsigned int);
