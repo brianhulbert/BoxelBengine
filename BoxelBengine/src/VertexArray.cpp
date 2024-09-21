@@ -2,9 +2,12 @@
 #include "VertexBufferLayout.h"
 #include "Renderer.h"
 
+#include <iostream>
+
+#define INT2VOIDP(i) ((void*)(uintptr_t)(i))
+
 VertexArray::VertexArray() : attribCount(0){
-	
-	GLCALL(glGenVertexArrays(1, &m_RendererID));
+	glGenVertexArrays(1, &m_RendererID);
 }
 
 VertexArray::~VertexArray() {
@@ -19,7 +22,7 @@ void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& la
 	for (unsigned int i = 0; i < elements.size(); i++) {
 		const auto& element = elements[i];
 		GLCALL(glEnableVertexAttribArray(i + attribCount));
-		GLCALL(glVertexAttribPointer(i + attribCount, element.count, element.type, element.normalized, layout.GetStride(), (const void*)offset));
+		GLCALL(glVertexAttribPointer(i + attribCount, element.count, element.type, element.normalized, layout.GetStride(), INT2VOIDP(offset)));
 		GLCALL(glVertexAttribDivisor(i + attribCount, divisor));
 		offset += element.count * VertexBufferElement::GetSizeOfType(element.type);
 	}

@@ -19,7 +19,7 @@ void main() {
    gl_Position = proj * view * model * position;
    vs_out.v_texCoord = textCoord;
    vs_out.v_fragPos = vec3(model * vec4(position));
-};
+}
 
 #shader geometry
 #version 330 core
@@ -87,4 +87,4 @@ void main() {
    if (color.w < 0.3f) {
 	   color = vec4(texCoord.x, 0.0f, texCoord.y, 0.3f);
    }
-};
+}

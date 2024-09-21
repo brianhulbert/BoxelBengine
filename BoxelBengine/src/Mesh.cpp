@@ -21,7 +21,7 @@ void Mesh::SetData(float* vertices, unsigned int vertexCount, unsigned int* indi
 	this->indexCount = indexCount;
 }
 
-void Mesh::SetDataLayout(VertexBufferLayout* vertexttribs) {
+void Mesh::SetDataLayout(VertexBufferLayout* vertexAttribs) {
 	this->vertexAttribs = vertexAttribs;
 }
 
