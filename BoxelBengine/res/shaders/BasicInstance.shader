@@ -14,7 +14,7 @@ void main() {
 
     gl_Position = MVP * position;
     v_texCoord = textCoord;
-};
+}
 
 #shader fragment
 #version 330 core
@@ -32,4 +32,4 @@ void main() {
     if (color.w < 0.3f) {
 	    color = vec4(v_texCoord.x, 0.0f, v_texCoord.y, 0.3f);
     }
-};
+}
