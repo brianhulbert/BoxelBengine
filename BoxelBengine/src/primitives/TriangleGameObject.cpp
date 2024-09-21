@@ -1,4 +1,5 @@
 #include "TriangleGameObject.h"
+#include <cstring>
 
 TriangleGameObject::TriangleGameObject(scene::Scene* parentScene, Mesh* mesh, std::string shaderfile, std::string texturefile) :
 	GameObject(parentScene, mesh, shaderfile, texturefile) {

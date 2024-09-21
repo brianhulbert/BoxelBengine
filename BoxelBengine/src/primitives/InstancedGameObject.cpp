@@ -1,6 +1,7 @@
 #include "InstancedGameObject.h"
 #include "Renderer.h"
 #include "Texture.h"
+#include <cstring>
 
 InstancedGameObject::InstancedGameObject(scene::Scene* parentScene, Mesh* mesh, std::string shaderfile, std::string texturefile, unsigned int count, glm::mat4* modelMatrices, VertexArray* va, VertexBuffer* vb, IndexBuffer* ib) :
 	GameObject(parentScene, mesh, shaderfile, texturefile, va, vb, ib), count(count), modelMats(modelMatrices) {
