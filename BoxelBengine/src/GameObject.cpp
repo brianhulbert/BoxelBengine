@@ -1,6 +1,7 @@
 #include <memory>
 #include <array>
 #include <cmath> 
+#include <math.h>
 
 #include "GameObject.h"
 #include "GameWindow.h"
@@ -53,9 +54,9 @@ void GameObject::Draw() {
 void GameObject::Update(float deltaTime) {
 	//std::cout << "delatTime: " << deltaTime << std::endl;
 	transform.translation += deltaTime * velocity.transVelocity;
-	transform.rotation.x = std::fmodf((deltaTime * velocity.rotVelocity.x) + transform.rotation.x, 360.0f);
-	transform.rotation.y = std::fmodf((deltaTime * velocity.rotVelocity.y) + transform.rotation.y, 360.0f);
-	transform.rotation.z = std::fmodf((deltaTime * velocity.rotVelocity.z) + transform.rotation.z, 360.0f);
+	transform.rotation.x = ::fmodf((deltaTime * velocity.rotVelocity.x) + transform.rotation.x, 360.0f);
+	transform.rotation.y = ::fmodf((deltaTime * velocity.rotVelocity.y) + transform.rotation.y, 360.0f);
+	transform.rotation.z = ::fmodf((deltaTime * velocity.rotVelocity.z) + transform.rotation.z, 360.0f);
 }
 
 glm::mat4 GameObject::GetModelMat() {

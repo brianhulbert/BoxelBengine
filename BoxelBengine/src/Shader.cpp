@@ -7,6 +7,8 @@
 #include <fstream>
 #include <sstream>
 
+#include <filesystem>
+
 #include "Renderer.h"
 
 
@@ -75,6 +77,15 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
 ShaderProgramSource Shader::ParseShader(const std::string& filepath) {
     std::ifstream stream(filepath);
 
+
+    if (!stream.good()) {
+      std::cout << "current path: " << std::filesystem::current_path() << std::endl;
+      std::cout << "ERROR: attempted to load shader from nonexisting file: " << filepath << std::endl;
+      return {"",""};
+    }
+
+    std::cout << "parsing shader: " << filepath << std::endl;
+
     enum class ShaderType {
         NONE = -1, VERTEX = 0, GEOMETRY = 1, FRAGMENT = 2
     };
@@ -130,7 +141,7 @@ void Shader::SetUniformMat4f(const std::string& name, glm::mat4& matrix) {
 int Shader::GetUniformLocation(const std::string& name) {
     if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
         return m_UniformLocationCache[name];
-	GLCALL(int location = glGetUniformLocation(m_RendererID, name.c_str()));
+    GLCALL(int location = glGetUniformLocation(m_RendererID, name.c_str()));
     if (location == -1)
         std::cout << "Warning: uniform " << name << " doesn't exist." << std::endl;
     m_UniformLocationCache[name] = location;

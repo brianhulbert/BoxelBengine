@@ -1,6 +1,7 @@
 #include "InstancedGameObject.h"
 #include "Renderer.h"
 #include "Texture.h"
+#include <cstring>
 
 InstancedGameObject::InstancedGameObject(scene::Scene* parentScene, Mesh* mesh, std::string shaderfile, std::string texturefile, unsigned int count, glm::mat4* modelMatrices, VertexArray* va, VertexBuffer* vb, IndexBuffer* ib) :
 	GameObject(parentScene, mesh, shaderfile, texturefile, va, vb, ib), count(count), modelMats(modelMatrices) {
@@ -9,7 +10,8 @@ InstancedGameObject::InstancedGameObject(scene::Scene* parentScene, Mesh* mesh, 
 	unsigned int modelBufferSize = count * sizeof(glm::mat4);
 	transformVB = new VertexBuffer(modelMats, modelBufferSize);
 	VertexBufferLayout modelBufferLayout;
-	modelBufferLayout.Push<glm::mat4>(1);
+	//modelBufferLayout.Push<glm::mat4>(1);
+  modelBufferLayout.push_glmmat4(1);
 	this->va->AddBuffer(*transformVB, modelBufferLayout, 1);
 }
 

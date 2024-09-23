@@ -11,7 +11,7 @@ uniform mat4 u_MVP;
 void main() {
    gl_Position = u_MVP * position;
    v_texCoord = textCoord;
-};
+}
 
 #shader fragment
 #version 330 core
@@ -25,4 +25,4 @@ in vec2 v_texCoord;
 void main() {
 
    color = texture(u_Texture, v_texCoord);
-};
+}
