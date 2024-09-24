@@ -19,12 +19,22 @@ file(GLOB_RECURSE SRC_FILES
 file(GLOB_RECURSE H_FILES 
   ${CMAKE_SOURCE_DIR}/src/*.hpp 
   ${CMAKE_SOURCE_DIR}/src/*.h
+  ${CMAKE_SOURCE_DIR}/src/multithreading/*.h 
   ${CMAKE_SOURCE_DIR}/external.imgui/*.hpp
   ${CMAKE_SOURCE_DIR}/external.imgui/*.h
 )
 
-
 add_executable(${PROJECT_NAME} ${H_FILES} ${SRC_FILES})
+
+message("H_FILES:"${H_FILES})
+
+#used for googletest
+add_executable(
+  bengine_tests 
+  ${H_FILES} 
+  src/multithreading/ThreadRunner.cpp
+  test/tests.cpp
+)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -52,8 +62,41 @@ include_directories(
   "${CMAKE_SOURCE_DIR}/external/"
 )
 
-target_link_libraries(${PROJECT_NAME} ${LIBS})
-
 #copy resources to build directory
 file(COPY "${CMAKE_SOURCE_DIR}/res/" DESTINATION "${CMAKE_BINARY_DIR}/res/")
+
+#setup googletest
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+target_include_directories(
+  bengine_tests 
+  PRIVATE 
+  "${CMAKE_SOURCE_DIR}/src"
+  "${CMAKE_SOURCE_DIR}/src/primitives/"
+  "${CMAKE_SOURCE_DIR}/src/scenes/"
+  "${CMAKE_SOURCE_DIR}/external/imgui/backends/"
+  "${CMAKE_SOURCE_DIR}/external/imgui/"
+  "${CMAKE_SOURCE_DIR}/external/"
+)
+
+target_link_libraries(${PROJECT_NAME} ${LIBS})
+
+target_link_libraries(bengine_tests ${LIBS})
+
+enable_testing()
+
+target_link_libraries(
+  bengine_tests
+  GTest::gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(bengine_tests)
 
