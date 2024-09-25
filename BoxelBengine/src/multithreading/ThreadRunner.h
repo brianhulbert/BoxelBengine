@@ -30,5 +30,5 @@ private:
   int execute();
   //state is shared between ThreadRunner object and th
   std::atomic<ThreadRunnerState> state;
-  std::thread th;
+  std::thread* th;
 };
